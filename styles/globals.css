@@ -1,5 +1,5 @@
 /* =========================
-   RESET (CLEAN + STABLE)
+   RESET
    ========================= */
 * {
   margin: 0;
@@ -8,7 +8,7 @@
 }
 
 /* =========================
-   BODY (MOBILE-PRO SAFE)
+   BODY
    ========================= */
 body {
   font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
@@ -16,14 +16,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  /* Background */
   background: linear-gradient(135deg, #667eea, #764ba2);
   background-attachment: fixed;
 
-  /* FIX: mobile viewport issues (important) */
   min-height: 100vh;
   min-height: 100dvh;
-  /* modern mobile fix */
 
   display: flex;
   justify-content: center;
@@ -34,7 +31,7 @@ body {
 }
 
 /* =========================
-   MAIN WRAPPER (SAFE CENTERING)
+   CONTAINER
    ========================= */
 .container {
   width: 100%;
@@ -45,13 +42,11 @@ body {
   align-items: center;
 
   padding: 20px;
-
-  /* prevents overflow on small screens */
   flex-wrap: wrap;
 }
 
 /* =========================
-   TYPOGRAPHY (CLEANER LOOK)
+   TYPOGRAPHY
    ========================= */
 h1,
 h2,
@@ -68,33 +63,160 @@ p {
 }
 
 /* =========================
-   INTERACTIVE ELEMENTS
+   CARD UI
    ========================= */
-button,
-input,
-a {
-  font-family: inherit;
-  -webkit-tap-highlight-color: transparent;
-  /* mobile UX fix */
+.auth-card,
+.card {
+  width: 360px;
+
+  padding: 40px;
+
+  border-radius: 15px;
+
+  background: rgba(255, 255, 255, 0.12);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+
+  color: white;
+  text-align: center;
+
+  border-top: 2px solid rgba(255, 122, 24, 0.4);
+
+  transition: all 0.3s ease;
 }
 
-/* Smooth interaction */
-button {
+.auth-card:hover,
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* =========================
+   INPUTS
+   ========================= */
+.auth-card input,
+.card input,
+input {
+  width: 100%;
+  height: 45px;
+
+  padding: 0 14px;
+  margin: 10px 0;
+
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  outline: none;
+  font-size: 14px;
+
+  background: rgba(255, 255, 255, 0.10);
+
+  color: rgb(193, 193, 193);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
   transition: all 0.25s ease;
-  transform: translateZ(0);
-  /* smoother animations */
 }
 
+/* Placeholder */
+.auth-card input::placeholder,
+.card input::placeholder,
+input::placeholder {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* Focus Effect */
+.auth-card input:focus,
+.card input:focus,
+input:focus {
+  border-color: #ff7a18;
+
+  background: rgba(255, 122, 24, 0.12);
+
+  transform: scale(1.02);
+
+  box-shadow: 0 0 15px rgba(255, 122, 24, 0.35);
+}
+
+/* =========================
+   BUTTONS
+   ========================= */
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+
+  border: none;
+  border-radius: 8px;
+
+  font-weight: bold;
+  cursor: pointer;
+
+  transition: 0.3s;
+
+  font-family: inherit;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Primary */
+.primary {
+  background: #ff7a18;
+  color: white;
+}
+
+.primary:hover {
+  background: #ff9a3c;
+  transform: translateY(-2px);
+}
+
+/* Secondary */
+.secondary {
+  background: rgba(255, 255, 255, 0.2);
+  color: rgb(202, 202, 203);
+}
+
+.secondary:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* =========================
+   LINKS
+   ========================= */
 a {
+  color: #ffd369;
+  text-decoration: none;
+
   transition: all 0.2s ease;
+
+  font-family: inherit;
+
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* Focus (keyboard + accessibility) */
+a:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   ACCESSIBILITY
+   ========================= */
 button:focus,
 input:focus,
 a:focus {
   outline: 2px solid rgba(255, 255, 255, 0.4);
   outline-offset: 2px;
+}
+
+/* =========================
+   FOOTER TEXT
+   ========================= */
+p:last-child {
+  margin-top: 10px;
+  font-size: 13px;
 }
 
 /* =========================
@@ -119,132 +241,11 @@ a:focus {
   p {
     font-size: 13px;
   }
-}
 
-.auth-card input,
-.card input {
-  width: 100%;
-  padding: 12px 14px;
-  margin: 10px 0;
-
-  border-radius: 10px;
-
-  /* subtle border */
-  border: 1px solid rgba(255, 255, 255, 0.25);
-
-  outline: none;
-  font-size: 14px;
-
-  /* 🔥 THIS IS THE KEY — blends with your gradient background */
-  background: rgba(255, 255, 255, 0.10);
-
-  color: rgb(193, 193, 193);
-
-  /* glass effect */
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-
-  transition: all 0.25s ease;
-}
-
-/* placeholder */
-.auth-card input::placeholder,
-.card input::placeholder {
-  color: rgba(255, 255, 255, 0.75);
-}
-
-/* focus effect (pro UI feel) */
-.auth-card input:focus,
-.card input:focus {
-  border-color: #ff7a18;
-
-  /* slightly brighter glass when typing */
-  background: rgba(255, 122, 24, 0.12);
-
-  transform: scale(1.02);
-  box-shadow: 0 0 15px rgba(255, 122, 24, 0.35);
-}
-
-/* Links */
-.auth-card a {
-  color: #ffd369;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.auth-card a:hover {
-  text-decoration: underline;
-}
-
-/* Inputs */
-input {
-  width: 100%;
-  padding: 12px;
-  margin: 10px 0;
-  border: none;
-  border-radius: 8px;
-  outline: none;
-  font-size: 14px;
-}
-
-/* =========================
-   BUTTONS
-   ========================= */
-button {
-  width: 100%;
-  padding: 12px;
-  margin-top: 10px;
-
-  border: none;
-  border-radius: 8px;
-
-  font-weight: bold;
-  cursor: pointer;
-
-  transition: 0.3s;
-}
-
-/* primary */
-.primary {
-  background: #ff7a18;
-  color: white;
-}
-
-.primary:hover {
-  background: #ff9a3c;
-  transform: translateY(-2px);
-}
-
-/* secondary */
-.secondary {
-  background: rgba(255, 255, 255, 0.2);
-  color: rgb(202, 202, 203);
-}
-
-.secondary:hover {
-  background: rgba(255, 255, 255, 0.4);
-}
-
-/* =========================
-   LINKS
-   ========================= */
-a {
-  color: #ffd369;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-/* =========================
-   FOOTER TEXT
-   ========================= */
-p:last-child {
-  margin-top: 10px;
-  font-size: 13px;
-}
-
-.auth-card {
-  border-top: 2px solid rgba(255, 122, 24, 0.4);
+  .auth-card,
+  .card {
+    width: 100%;
+    max-width: 340px;
+    padding: 30px 24px;
+  }
 }
