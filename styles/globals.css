@@ -1,51 +1,179 @@
-/* Reset */
+/* =========================
+   RESET (CLEAN + STABLE)
+   ========================= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Background */
+/* =========================
+   BODY (MOBILE-PRO SAFE)
+   ========================= */
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  height: 100vh;
-}
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
 
-/* Center layout */
-.container {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Background */
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  background-attachment: fixed;
+
+  /* FIX: mobile viewport issues (important) */
+  min-height: 100vh;
+  min-height: 100dvh;
+  /* modern mobile fix */
+
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+
+  overflow-x: hidden;
+  color: #fff;
 }
 
-/* Glass card effect */
-.card {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  padding: 40px;
-  border-radius: 15px;
-  width: 320px;
-  text-align: center;
-  color: white;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-  transition: 0.3s;
+/* =========================
+   MAIN WRAPPER (SAFE CENTERING)
+   ========================= */
+.container {
+  width: 100%;
+  max-width: 1200px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+
+  /* prevents overflow on small screens */
+  flex-wrap: wrap;
 }
 
-.card:hover {
-  transform: translateY(-5px);
+/* =========================
+   TYPOGRAPHY (CLEANER LOOK)
+   ========================= */
+h1,
+h2,
+h3 {
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  text-rendering: optimizeLegibility;
 }
 
-/* Title */
-.card h1, .card h2 {
-  margin-bottom: 15px;
-}
-
-/* Description */
-.card p {
+p {
+  opacity: 0.9;
+  line-height: 1.5;
   font-size: 14px;
-  margin-bottom: 15px;
+}
+
+/* =========================
+   INTERACTIVE ELEMENTS
+   ========================= */
+button,
+input,
+a {
+  font-family: inherit;
+  -webkit-tap-highlight-color: transparent;
+  /* mobile UX fix */
+}
+
+/* Smooth interaction */
+button {
+  transition: all 0.25s ease;
+  transform: translateZ(0);
+  /* smoother animations */
+}
+
+a {
+  transition: all 0.2s ease;
+}
+
+/* Focus (keyboard + accessibility) */
+button:focus,
+input:focus,
+a:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.4);
+  outline-offset: 2px;
+}
+
+/* =========================
+   MOBILE OPTIMIZATION
+   ========================= */
+@media (max-width: 768px) {
+  body {
+    padding: 16px;
+  }
+
+  .container {
+    padding: 10px;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  body {
+    padding: 12px;
+  }
+
+  p {
+    font-size: 13px;
+  }
+}
+
+.auth-card input,
+.card input {
+  width: 100%;
+  padding: 12px 14px;
+  margin: 10px 0;
+
+  border-radius: 10px;
+
+  /* subtle border */
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  outline: none;
+  font-size: 14px;
+
+  /* 🔥 THIS IS THE KEY — blends with your gradient background */
+  background: rgba(255, 255, 255, 0.10);
+
+  color: rgb(193, 193, 193);
+
+  /* glass effect */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  transition: all 0.25s ease;
+}
+
+/* placeholder */
+.auth-card input::placeholder,
+.card input::placeholder {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* focus effect (pro UI feel) */
+.auth-card input:focus,
+.card input:focus {
+  border-color: #ff7a18;
+
+  /* slightly brighter glass when typing */
+  background: rgba(255, 122, 24, 0.12);
+
+  transform: scale(1.02);
+  box-shadow: 0 0 15px rgba(255, 122, 24, 0.35);
+}
+
+/* Links */
+.auth-card a {
+  color: #ffd369;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.auth-card a:hover {
+  text-decoration: underline;
 }
 
 /* Inputs */
@@ -59,19 +187,24 @@ input {
   font-size: 14px;
 }
 
-/* Buttons */
+/* =========================
+   BUTTONS
+   ========================= */
 button {
   width: 100%;
   padding: 12px;
   margin-top: 10px;
+
   border: none;
   border-radius: 8px;
+
   font-weight: bold;
   cursor: pointer;
+
   transition: 0.3s;
 }
 
-/* Primary button */
+/* primary */
 .primary {
   background: #ff7a18;
   color: white;
@@ -79,19 +212,22 @@ button {
 
 .primary:hover {
   background: #ff9a3c;
+  transform: translateY(-2px);
 }
 
-/* Secondary button */
+/* secondary */
 .secondary {
-  background: rgba(255,255,255,0.2);
-  color: white;
+  background: rgba(255, 255, 255, 0.2);
+  color: rgb(202, 202, 203);
 }
 
 .secondary:hover {
-  background: rgba(255,255,255,0.4);
+  background: rgba(255, 255, 255, 0.4);
 }
 
-/* Links */
+/* =========================
+   LINKS
+   ========================= */
 a {
   color: #ffd369;
   text-decoration: none;
@@ -101,12 +237,14 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Message text */
+/* =========================
+   FOOTER TEXT
+   ========================= */
 p:last-child {
   margin-top: 10px;
   font-size: 13px;
 }
 
-.card strong {
-  color: #ffd369;
+.auth-card {
+  border-top: 2px solid rgba(255, 122, 24, 0.4);
 }

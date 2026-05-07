@@ -30,8 +30,8 @@ export default function Login() {
   }
 
   return (
-    <div className="container">
-      <div className="card">
+    <div className="auth-container">
+      <div className="auth-card"style={{ borderTop: '3px solid rgba(255, 255, 255, 0.2)' }}>
         <h2>Login</h2>
 
         <input
